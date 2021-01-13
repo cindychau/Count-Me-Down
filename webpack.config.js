@@ -1,7 +1,7 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   entry: path.resolve(__dirname, './src/index.js'),
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -9,8 +9,12 @@ module.exports = {
   },
   devServer: {
     publicPath: '/build/',
+    contentBase: './src', //frontend folder
+    hot: true,
+    proxy: {
+      '/holiday': 'http://localhost:3000/',
+    },
   },
-  mode: process.env.NODE_ENV,
   module: {
     rules: [
       {
