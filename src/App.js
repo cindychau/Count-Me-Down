@@ -100,10 +100,11 @@ class App extends React.Component {
             </label>
           </div>
           <br></br>
-          <input type="submit" value="Add New Event" />
+          {/* <input type="submit" value="Add New Event" /> */}
+          <button onclick="handleSubmit">Add New Event</button>
         </form>
-        <div class="card-container">
-          <div>{this.state.storedEvents}</div>
+        <div>
+          <div class="card-container">{this.state.storedEvents}</div>
         </div>
       </div>
     );

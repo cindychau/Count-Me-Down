@@ -25,12 +25,12 @@ connection.once('open', () => {
 });
 
 //routes - require routers
-const holidayRouter = require('../routes/holiday');
+// const holidayRouter = require('../routes/holiday');
 const personalRouter = require('../routes/personal');
 // const workRouter = require('../routes/work');
 
 //routes - use
-app.use('/holiday', holidayRouter);
+// app.use('/holiday', holidayRouter);
 app.use('/personal', personalRouter);
 // app.use('/work', workRouter);
 

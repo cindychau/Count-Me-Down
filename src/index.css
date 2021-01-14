@@ -1,5 +1,5 @@
 body {
-  background-color:rgb(233, 235, 243)
+  background-color:rgb(233, 235, 243);
 }
 
 h1 {
@@ -47,11 +47,20 @@ input[type='date']:focus {
   background-color: rgb(214, 231, 255);
 }
 
-.cards {
-  border-style: solid;
+button {
+  margin-bottom: 30px;
 }
 
 .card-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 30px;
 }
+
+.cards {
+  border-style: solid;
+  text-align: center;
+}
+
