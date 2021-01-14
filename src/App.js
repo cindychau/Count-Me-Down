@@ -79,8 +79,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Count-Me-Down</h1>
-        <form onSubmit={this.handleSubmit}>
+        <h1 id="title">Count-Me-Down</h1>
+        <form class="input-form" onSubmit={this.handleSubmit}>
           <label>
             Event Name:
             <input
@@ -90,17 +90,21 @@ class App extends React.Component {
             />
           </label>
           <div>
-            Event Date:
+          <label>
+            Event Date: 
             <input
               type="date"
               value={this.state.date}
               onChange={this.handleEventDateChange}
             />
+            </label>
           </div>
           <br></br>
           <input type="submit" value="Add New Event" />
         </form>
-        <div>{this.state.storedEvents}</div>
+        <div class="card-container">
+          <div>{this.state.storedEvents}</div>
+        </div>
       </div>
     );
   }

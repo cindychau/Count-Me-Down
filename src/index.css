@@ -1,4 +1,57 @@
+body {
+  background-color:rgb(233, 235, 243)
+}
+
 h1 {
-  font-size: large;
-  color: blueviolet;
+  font-family: 'Quicksand', sans-serif;
+  margin-bottom: 0.75%;
+}
+
+#title {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 50px;
+  text-align: center;
+}
+
+.input-form {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+label {
+  font-size: 25px;
+}
+
+input[type='text']{
+  background-color:rgb(233, 235, 243);
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+input[type='date']{
+  background-color:rgb(233, 235, 243);
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+input[type='text']:focus {
+  background-color: rgb(214, 231, 255);
+}
+
+input[type='date']:focus {
+  background-color: rgb(214, 231, 255);
+}
+
+.cards {
+  border-style: solid;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
 }

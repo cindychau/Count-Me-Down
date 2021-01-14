@@ -4,7 +4,6 @@ class EventCard extends React.Component {
   getDaysToEvent() {
     const currentDate = new Date(); // Wed Jan 13 2021 23:35:46 GMT-0500 (Eastern Standard Time)
     const eventDate = new Date(this.props.date); //turns MM-DD-YY to same format as above
-
     // Evaulates in milliseconds
     const daysToEvent = this.convertToDays(eventDate - currentDate);
 
@@ -18,11 +17,10 @@ class EventCard extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.props.date}</h1>
-        <h2>{this.getDaysToEvent()} days til</h2>
-        <h1>{this.props.eventName}</h1>
-        <p>_____________________________________________</p>
+      <div class="cards">
+        <h1 class="cards-eventName">{this.props.eventName}</h1>
+        <h1 class="cards-date">{this.props.date}</h1>
+        <h1 class="cards-days">{this.getDaysToEvent()} days til</h1>
       </div>
     );
   }
