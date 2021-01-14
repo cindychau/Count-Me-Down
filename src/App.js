@@ -10,6 +10,7 @@ class App extends React.Component {
     this.handleEventNameChange = this.handleEventNameChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEventDateChange = this.handleEventDateChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -19,16 +20,51 @@ class App extends React.Component {
         (result) => {
           let events = [];
 
-          result.map(({ eventName, date }) => {
-            events.push(<EventCard eventName={eventName} date={date} />);
+          console.log('did mount result, before inseting to eventcard', result);
+          result.map(({ _id, eventName, date }) => {
+            events.push(
+              <EventCard
+                id={_id}
+                key={_id}
+                eventName={eventName}
+                date={date}
+                handleDelete={this.handleDelete}
+              />
+            );
           });
 
           this.setState({ storedEvents: events });
+
+          console.log('didmount resuklt', this.state.storedEvents);
         },
         (error) => {
           alert('Error Loading Events:' + error);
         }
       );
+  }
+
+  handleDelete(id) {
+    console.log('detele stuff id, ', id);
+
+    fetch('http://localhost:3000/personal/delete/' + id, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log('Deleted sucessfully', result);
+
+        const tempVar = this.state.storedEvents;
+        for (let i = 0; i < tempVar.length; i += 1) {
+          if (tempVar[i].props.id == id) {
+            tempVar.splice(i, 1);
+            break;
+          }
+        }
+
+        this.setState({ storedEvents: tempVar });
+
+        return result;
+      });
   }
 
   handleEventNameChange(event) {
@@ -48,13 +84,14 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then(
-        (result) => {
-          alert('A new event was added: ' + this.state.eventName);
-
+        ({ _id, eventName, date }) => {
           const newEvent = (
             <EventCard
-              eventName={this.state.eventName}
-              date={this.state.date}
+              id={_id}
+              key={_id}
+              eventName={eventName}
+              date={date}
+              handleDelete={this.handleDelete}
             />
           );
 
@@ -90,13 +127,13 @@ class App extends React.Component {
             />
           </label>
           <div>
-          <label>
-            Event Date: 
-            <input
-              type="date"
-              value={this.state.date}
-              onChange={this.handleEventDateChange}
-            />
+            <label>
+              Event Date:
+              <input
+                type="date"
+                value={this.state.date}
+                onChange={this.handleEventDateChange}
+              />
             </label>
           </div>
           <br></br>

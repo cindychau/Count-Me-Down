@@ -18,7 +18,7 @@ router.route('/add').post((req, res) => {
 
   newEvent
     .save()
-    .then(() => res.json('New personal event added!'))
+    .then((data) => res.json(data)) //pass down the id
     .catch(() => res.status(400).json('Error at personal route add: ' + err));
 });
 
@@ -35,7 +35,7 @@ router.route('/update/:id').put((req, res) => {
 });
 
 //delete personal events
-router.route('/:id').delete((req, res) => {
+router.route('/delete/:id').delete((req, res) => {
   Personal.findByIdAndDelete(req.params.id)
     .then(() => res.json('Personal event deleted!'))
     .catch((err) =>
