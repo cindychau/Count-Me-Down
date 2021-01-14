@@ -12,7 +12,7 @@ module.exports = {
     contentBase: './src', //frontend folder
     hot: true,
     proxy: {
-      '/holiday': 'http://localhost:3000/',
+      '/personal': 'http://localhost:3000/',
     },
   },
   module: {
