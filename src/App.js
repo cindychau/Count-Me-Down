@@ -15,12 +15,11 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch('http://localhost:3000/personal')
-      .then((res) => res.json())
+      .then((res) => res.json()) //returns a promise of a JSON object after recieving HTTP header response
       .then(
         (result) => {
           let events = [];
 
-          console.log('did mount result, before inseting to eventcard', result);
           result.map(({ _id, eventName, date }) => {
             events.push(
               <EventCard
@@ -33,9 +32,7 @@ class App extends React.Component {
             );
           });
 
-          this.setState({ storedEvents: events });
-
-          console.log('didmount resuklt', this.state.storedEvents);
+          this.setState({ storedEvents: events }); //setState calls render
         },
         (error) => {
           alert('Error Loading Events:' + error);
@@ -68,7 +65,15 @@ class App extends React.Component {
   }
 
   handleEventNameChange(event) {
+    console.log('lol', event.target);
     this.setState({ eventName: event.target.value });
+  }
+
+  handleEventDateChange(event) {
+    console.log('date cahnge', event.target);
+    this.setState({
+      date: event.target.value,
+    });
   }
 
   handleSubmit(event) {
@@ -84,7 +89,8 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then(
-        ({ _id, eventName, date }) => {
+        (data) => {
+          const { _id, eventName, date } = data;
           const newEvent = (
             <EventCard
               id={_id}
@@ -98,19 +104,13 @@ class App extends React.Component {
           const tempVar = this.state.storedEvents;
           tempVar.push(newEvent);
 
-          this.setState({ storedEvents: tempVar });
+          this.setState({ eventName: '', date: '', storedEvents: tempVar });
         },
         (error) => {
           alert('Error Loading Events:' + error);
         }
       );
     event.preventDefault();
-  }
-
-  handleEventDateChange(event) {
-    this.setState({
-      date: event.target.value,
-    });
   }
 
   render() {
@@ -137,8 +137,7 @@ class App extends React.Component {
             </label>
           </div>
           <br></br>
-          {/* <input type="submit" value="Add New Event" /> */}
-          <button onclick="handleSubmit">Add New Event</button>
+          <button onClick={() => this.handleSubmit}>Add New Event</button>
         </form>
         <div>
           <div class="card-container">{this.state.storedEvents}</div>

@@ -4,8 +4,8 @@ const { Redirect } = require('react-router-dom');
 
 //homepage of personal
 router.route('/').get((req, res) => {
-  Personal.find()
-    .then((data) => res.json(data))
+  Personal.find() //.find is mongoose library
+    .then((data) => res.json(data))//returns a promise of a JSON object after recieving 
     .catch((err) => res.status(400).json('Error at personal route: ' + err));
 });
 
@@ -17,7 +17,7 @@ router.route('/add').post((req, res) => {
   });
 
   newEvent
-    .save()
+    .save() //.save calls mongoose library
     .then((data) => res.json(data)) //pass down the id
     .catch(() => res.status(400).json('Error at personal route add: ' + err));
 });
