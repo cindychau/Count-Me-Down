@@ -48,8 +48,19 @@ input[type='date']:focus {
 }
 
 button {
+  margin: 20px;
+  font-size: 19px;
+  color:rgb(34, 87, 156);
+  background-color: rgb(233, 235, 243);
+  border-color:rgb(233, 235, 243)
+}
+
+.btn-delete {
   margin: 10px;
-  font-size: 15px;
+  font-size: 19px;
+  color:rgb(107, 142, 187);
+  background-color: rgb(233, 235, 243);
+  border-color:rgb(233, 235, 243)
 }
 
 .card-container {
@@ -63,4 +74,5 @@ button {
 .cards {
   border-style: solid;
   text-align: center;
+  width: 300px;
 }

@@ -31,8 +31,8 @@ function EventCard(props) {
       <h1 class="cards-eventName">{props.eventName}</h1>
       <h1 class="cards-date">{formatDate(props.date)}</h1>
       <h1 class="cards-days">{getDaysToEvent()} days</h1>
-      <button onClick={() => props.handleDelete(this.props.id)}>Delete</button>
-      <button onClick="handleEdit">Edit</button>
+      <button class="btn-delete" onClick={() => props.handleDelete(props.id)}>Delete</button>
+      {/* <button onClick="handleEdit">Edit</button> */}
     </div>
   );
 }

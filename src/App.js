@@ -136,7 +136,6 @@ class App extends React.Component {
               />
             </label>
           </div>
-          <br></br>
           <button onClick={() => this.handleSubmit}>Add New Event</button>
         </form>
         <div>
