@@ -52,7 +52,14 @@ button {
   font-size: 19px;
   color:rgb(34, 87, 156);
   background-color: rgb(233, 235, 243);
-  border-color:rgb(233, 235, 243)
+  border-color:rgb(233, 235, 243);
+  border-radius: 5px;
+  border-style: none;
+}
+
+.btn-new{
+  border-style: solid;
+  border: black;
 }
 
 .btn-delete {
@@ -72,7 +79,17 @@ button {
 }
 
 .cards {
-  border-style: solid;
+  border-style:none;
   text-align: center;
   width: 300px;
+  background-color: rgb(218, 224, 246);
+}
+
+.cards-date{
+  color:rgb(111, 156, 214)
+}
+
+.cards-days{
+  font-size: 50px;
+  color:rgb(23, 24, 26)
 }

@@ -77,6 +77,12 @@ class App extends React.Component {
   }
 
   handleSubmit(event) {
+
+    if (!this.state.eventName || !this.state.date) {
+      alert('Please enter in event name and/or date!'); 
+      return;
+    }
+
     fetch('http://localhost:3000/personal/add', {
       method: 'POST',
       headers: {
@@ -119,7 +125,7 @@ class App extends React.Component {
         <h1 id="title">Count-Me-Down</h1>
         <form class="input-form" onSubmit={this.handleSubmit}>
           <label>
-            Event Name:
+            Event Name{' '}
             <input
               type="text"
               value={this.state.eventName}
@@ -128,7 +134,7 @@ class App extends React.Component {
           </label>
           <div>
             <label>
-              Event Date:
+              Event Date{' '}
               <input
                 type="date"
                 value={this.state.date}
@@ -136,7 +142,7 @@ class App extends React.Component {
               />
             </label>
           </div>
-          <button onClick={() => this.handleSubmit}>Add New Event</button>
+          <button class="btn-new" onClick={() => this.handleSubmit}>Add New Event</button>
         </form>
         <div>
           <div class="card-container">{this.state.storedEvents}</div>
